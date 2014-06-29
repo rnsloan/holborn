@@ -7,21 +7,36 @@
 `npm install holborn`
 
 
-### Testing 
+### Available grunt tasks
 
-watches for file changes and reruns tests each time
+Running spec tests and lint your amazing code  
 ```bash
-  $ grunt watch 
+  $ grunt test
 ```
 
-runs spec tests
+Coverage (you will need to pipe the results)  
 ```bash
-  $ grunt test  
+  $ grunt cov > cov.html
 ```
 
-produces coverage report (needs explicit piping)
+Building coffeescript to js  
 ```bash
-  $ grunt cov   
+  $ grunt build
+```
+
+Bump the version
+```bash
+  $ grunt bump
+```
+
+Linting your coffeescript (by rules defined in coffeelint.json)  
+```bash
+  $ grunt lint
+```
+
+Watching files for changes. Will trigger `test` job on file changes  
+```bash
+  $ grunt watch
 ```
 
 ## License
