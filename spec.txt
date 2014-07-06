@@ -1,0 +1,79 @@
+-------
+Models
+-------
+create a model that stores records,
+record names and attributes created on setup call. passed in as array
+.create, .read, .update, .delete
+set defaults
+.all returns all records
+.find returns object with all records that match find 'name' , 'ross'
+ can bind events
+- guid (this.id)
+
+
+later
+- add custom methods e.g. validate for on object creation
+
+
+-----
+View
+-----
+
+start with console.log ot std.out...
+example listen to model events
+model is either passed in on initialisation or put in directly. maybe put in directly to start
+
+
+
+initialize: function() {
+      this.listenTo(this.model, 'change', this.render);
+      this.listenTo(this.model, 'destroy', this.remove);
+    },
+
+HTML events
+events: {
+      "click .toggle"   : "toggleDone",
+      "dblclick .view"  : "edit",
+      "click a.destroy" : "clear",
+      "keypress .edit"  : "updateOnEnter",
+      "blur .edit"      : "close"
+    },
+
+template could be string with interpolation for command line output
+    render: function() {
+          this.$el.html(this.template(this.model.toJSON()));
+          this.$el.toggleClass('done', this.model.get('done'));
+          this.input = this.$('.edit');
+          return this;
+        },
+
+
+-----
+Router
+-----
+
+
+- create instance and class names
+
+- dont require collections just use model
+
+
+User = holborn.Model.create
+    instanceProperty: 'instanceProperty'
+    ,
+    classProperty: 'classProperty'
+
+User.include - after creation instance properties
+User.extend - after creation class properties
+
+
+
+
+
+later
+- subclasses
+- on creation set path (e.g. ajax url) to send new records to when calling update method
+- hoodie adaptor
+- router
+
+-------
