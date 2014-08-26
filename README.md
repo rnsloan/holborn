@@ -1,11 +1,13 @@
 # holborn [![Build Status](https://secure.travis-ci.org/rnsloan/holborn.png?branch=master)](https://travis-ci.org/rnsloan/holborn)
 
-> MVC library
+Opinionated Model useful for prototyping 
 
-### Getting started
+## Getting started
 
 `npm install holborn`
 
+
+## Development
 
 ### Available grunt tasks
 
