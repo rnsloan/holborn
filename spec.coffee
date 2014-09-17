@@ -8,6 +8,8 @@ set defaults
 .all returns all records
 .find returns object with all records that match find 'name' , 'ross'
  can bind events
+- method chaining
+- remote datastore in separate github
 - guid (this.id)
 
 
@@ -16,6 +18,7 @@ later
 
 ###
 
+#store as attributes object to validate against in future
 store = new Holborn ['name', 'age', 'sex']
 
 store.add
@@ -49,7 +52,7 @@ store.all
 # save to localstorage
 store.save
 
-# retreieve / update from local storage
+# retrieve / update from local storage
 store.fetch
 
 # return all relevant rows
