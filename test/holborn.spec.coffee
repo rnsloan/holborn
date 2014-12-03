@@ -1,13 +1,22 @@
 Holborn = require('../src/holborn')
 
-
-describe 'holborn', ->
+describe 'Holborn', ->
   it 'should exist', ->
-    test = new Holborn()
-    console.log test.hello()
+    Holborn.should.be.ok
 
-  describe 'initialising', ->
-    it 'initialise as a new class', ->
+  describe '#constructor', ->
+    it 'should throw an error if not initialised with array', ->
+      test = ->
+        new Holborn()
+      test.should.throw('initialising array not passed in')
+
+      test2 = ->
+        new Holborn('foobar')
+      test2.should.throw('initialising array not passed in')
+
+      test3 = ->
+        new Holborn([])
+      test3.should.not.throw()
 
 
 

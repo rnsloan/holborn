@@ -1,8 +1,10 @@
-hello = -> 'hello holborn222'
+util = require('util')
 
-# items attached to our namespace are available in Node.js as well as client browsers
+constructor = (inputArray) ->
+  if util.isArray(inputArray) is false
+    throw new Error 'initialising array not passed in'
+
 class Holborn
-  hello: hello
+  constructor: constructor
 
 module.exports = Holborn
-
