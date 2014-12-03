@@ -1,12 +1,16 @@
-mod = require "#{process.cwd()}/src/holborn"
+Holborn = require('../src/holborn')
+
 
 describe 'holborn', ->
   it 'should exist', ->
-    mod.should.be.ok
+    test = new Holborn()
+    console.log test.hello()
 
-  describe '#hello', ->
-    it 'should return the right value', ->
-      mod.hello().should.eql 'hello holborn'
+  describe 'initialising', ->
+    it 'initialise as a new class', ->
+
+
+
 
   # initialise
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
