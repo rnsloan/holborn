@@ -12,6 +12,10 @@ constructor = (inputArray) ->
   if inputArray.every(typeIsString)  is false
     throw new Error 'non string value in initialising array'
 
+  @_attributes = inputArray
+
+  return
+
 class Holborn
   constructor: constructor
 

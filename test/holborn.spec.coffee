@@ -28,14 +28,13 @@ describe 'Holborn', ->
         new Holborn(['erer', 'sdsd'])
       test2.should.not.throw()
 
+    it 'should save the initialising array values as an attributes property', ->
+      test = new Holborn(['foo', 'bar'])
+      test.should.have.property('_attributes')
+      test._attributes.should.eql(['foo', 'bar'])
 
 
-
-  # initialise
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
-  #should initialise as a new class
-  #should error if array is not passed in
-  #should save passed in array as attributes object
 
   # add
   #should store single object
