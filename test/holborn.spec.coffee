@@ -5,6 +5,10 @@ describe 'Holborn', ->
     Holborn.should.be.ok
 
   describe '#constructor', ->
+    it 'should create instances', ->
+      test = new Holborn(['foo', 'bar'])
+      test.should.be.an.instanceof(Holborn)
+
     it 'should throw an error if not initialised with array', ->
       test = ->
         new Holborn()
@@ -28,10 +32,12 @@ describe 'Holborn', ->
         new Holborn(['erer', 'sdsd'])
       test2.should.not.throw()
 
-    it 'should save the initialising array values as an attributes property', ->
+    it 'should save the initialising array values as an attributes property on the instance', ->
       test = new Holborn(['foo', 'bar'])
       test.should.have.property('_attributes')
       test._attributes.should.eql(['foo', 'bar'])
+
+      (typeof Holborn._attributes).should.be.undefined
 
 
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
