@@ -14,9 +14,19 @@ describe 'Holborn', ->
         new Holborn('foobar')
       test2.should.throw('initialising array not passed in')
 
-      test3 = ->
+    it 'should throw an error if initialise array is empty', ->
+      test = ->
         new Holborn([])
-      test3.should.not.throw()
+      test.should.throw('initialising array is empty')
+
+    it 'should throw an error if all array values are not a string', ->
+      test = ->
+        new Holborn(['erer', 5])
+      test.should.throw('non string value in initialising array')
+
+      test2 = ->
+        new Holborn(['erer', 'sdsd'])
+      test2.should.not.throw()
 
 
 
