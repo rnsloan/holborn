@@ -34,10 +34,34 @@ describe 'Holborn', ->
 
     it 'should save the initialising array values as an attributes property on the instance', ->
       test = new Holborn(['foo', 'bar'])
+
+      (typeof Holborn._attributes).should.be.undefined
+
       test.should.have.property('_attributes')
       test._attributes.should.eql(['foo', 'bar'])
 
-      (typeof Holborn._attributes).should.be.undefined
+    it 'should initialise an empty store', ->
+      test = new Holborn(['foo', 'bar'])
+      test._store.should.eql([])
+
+  describe '#add', ->
+    it 'should exist', ->
+      test = new Holborn ['name']
+      test.add.should.be.a.Function
+
+    it 'should add a single object to its store', ->
+      test = new Holborn ['name', 'age', 'sex']
+      test._store.should.be.empty
+      test.add
+        name: 'john',
+        age: 15,
+        sex: 'male'
+
+      test._store.should.eql([
+        name: 'john',
+        age: 15,
+        sex: 'male'
+      ])
 
 
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining

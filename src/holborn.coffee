@@ -13,10 +13,16 @@ constructor = (inputArray) ->
     throw new Error 'non string value in initialising array'
 
   @_attributes = inputArray
+  @_store = []
 
   return
 
+add = (input) ->
+  @_store.push input
+
+
 class Holborn
   constructor: constructor
+  add: add
 
 module.exports = Holborn
