@@ -44,6 +44,15 @@ describe 'Holborn', ->
       test = new Holborn(['foo', 'bar'])
       test._store.should.eql([])
 
+    it 'should throw an error if value is id', ->
+      test = ->
+        new Holborn(['id'])
+      test.should.throw("value 'id' is a reserved name")
+
+      test2 = ->
+        new Holborn(['ID'])
+      test2.should.throw("value 'id' is a reserved name")
+
   describe '#add', ->
     it 'should exist', ->
       test = new Holborn ['name']
