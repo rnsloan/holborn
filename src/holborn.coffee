@@ -3,6 +3,7 @@ constructor = (inputArray) ->
   typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
   typeIsString = ( value ) -> return typeof value == 'string'
   hasValueId = ( value ) -> return value.toLowerCase() == 'id'
+  @unique_id = 1
 
   if typeIsArray(inputArray) is false
     throw new Error 'initialising array not passed in'
@@ -22,8 +23,9 @@ constructor = (inputArray) ->
   return
 
 add = (input) ->
+  input.id = @unique_id
+  @unique_id++
   @_store.push input
-
 
 class Holborn
   constructor: constructor

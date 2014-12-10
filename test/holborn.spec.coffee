@@ -67,10 +67,13 @@ describe 'Holborn', ->
         sex: 'male'
 
       test._store.should.eql([
+        id: 1,
         name: 'john',
         age: 15,
         sex: 'male'
       ])
+
+      test.unique_id.should.eql 2
 
 
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
