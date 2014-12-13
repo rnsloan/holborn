@@ -54,12 +54,13 @@ describe 'Holborn', ->
       test2.should.throw("value 'id' is a reserved name")
 
   describe '#add', ->
+    test = null
+    beforeEach ->
+      test = new Holborn ['name', 'age', 'sex']
     it 'should exist', ->
-      test = new Holborn ['name']
       test.add.should.be.a.Function
 
     it 'should add a single object to its store', ->
-      test = new Holborn ['name', 'age', 'sex']
       test._store.should.be.empty
       test.add
         name: 'john',
@@ -74,6 +75,8 @@ describe 'Holborn', ->
       ])
 
       test.unique_id.should.eql 2
+
+    it 'should add a single object to its store', ->
 
 
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
