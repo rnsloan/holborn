@@ -76,16 +76,34 @@ describe 'Holborn', ->
 
       test.unique_id.should.eql 2
 
-    it 'should add a single object to its store', ->
+    it 'should add multiple objects to its store', ->
+      test.add
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      ,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
 
+
+      test._store.should.eql([
+        id: 1,
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])
+
+      test.unique_id.should.eql 3
 
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
 
   # add
-  #should store single object
-  #should generate id of 1
-  #should store multiple object
-  #should generate id of 2
   #should error if object passed in has key that is not in attributes object
   #should allow key order of passed in object to be random
   #should allow chaining add methods

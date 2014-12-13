@@ -22,10 +22,12 @@ constructor = (inputArray) ->
 
   return
 
-add = (input) ->
-  input.id = @unique_id
-  @unique_id++
-  @_store.push input
+add = (input...) ->
+  entries = input
+  entries.every (element) =>
+    element.id = @unique_id
+    @unique_id++
+    @_store.push element
 
 class Holborn
   constructor: constructor
