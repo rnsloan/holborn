@@ -38,6 +38,7 @@ add = (input...) ->
     @unique_id++
     @_store.push obj
 
+  this
 
 class Holborn
   constructor: constructor

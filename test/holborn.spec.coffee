@@ -101,6 +101,29 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
 
+      test._store.should.eql([
+        id: 1,
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])
+
+      test.unique_id.should.eql 3
+
+    it 'should be chainable', ->
+      test.add
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      .add
+        name: 'mary',
+        age: 23,
+        sex: 'female'
 
       test._store.should.eql([
         id: 1,
