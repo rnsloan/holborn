@@ -147,9 +147,3 @@ describe 'Holborn', ->
           foobar: 1234
 
       test2.should.throw("object key: foobar not in initialising array")
-
-  # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
-
-  # add
-  #should allow key order of passed in object to be random
-  #should allow chaining add methods
