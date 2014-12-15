@@ -77,6 +77,20 @@ describe 'Holborn', ->
 
       test.unique_id.should.eql 2
 
+    it 'should not matter what order the passed in objects keys are in', ->
+      test._store.should.be.empty
+      test.add
+        sex: 'male'
+        age: 15,
+        name: 'john'
+
+      test._store.should.eql([
+        id: 1,
+        name: 'john',
+        age: 15,
+        sex: 'male'
+      ])
+
     it 'should add multiple objects to its store', ->
       test.add
         name: 'frank',
