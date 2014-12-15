@@ -3,6 +3,7 @@ constructor = (inputArray) ->
   typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
   typeIsString = ( value ) -> return typeof value == 'string'
   hasValueId = ( value ) -> return value.toLowerCase() == 'id'
+
   @unique_id = 1
 
   if typeIsArray(inputArray) is false
@@ -23,11 +24,20 @@ constructor = (inputArray) ->
   return
 
 add = (input...) ->
-  entries = input
-  entries.every (element) =>
-    element.id = @unique_id
+  objects = input
+
+  checkKeys = (obj) =>
+    keys = Object.keys(obj)
+    for key in keys
+      if @_attributes.indexOf(key) == -1
+        throw new Error "object key: #{key} not in initialising array"
+
+  for obj in objects
+    checkKeys(obj)
+    obj.id = @unique_id
     @unique_id++
-    @_store.push element
+    @_store.push obj
+
 
 class Holborn
   constructor: constructor

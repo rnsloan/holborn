@@ -57,6 +57,7 @@ describe 'Holborn', ->
     test = null
     beforeEach ->
       test = new Holborn ['name', 'age', 'sex']
+
     it 'should exist', ->
       test.add.should.be.a.Function
 
@@ -101,9 +102,17 @@ describe 'Holborn', ->
 
       test.unique_id.should.eql 3
 
+    it 'should throw an error if trying to add key that has not been initialised', ->
+      test2 = ->
+        test.add
+          name: 'john',
+          age: 15,
+          foobar: 1234
+
+      test2.should.throw("object key: foobar not in initialising array")
+
   # http://coffeescriptcookbook.com/chapters/classes_and_objects/chaining
 
   # add
-  #should error if object passed in has key that is not in attributes object
   #should allow key order of passed in object to be random
   #should allow chaining add methods
