@@ -20,6 +20,8 @@ constructor = (inputArray) ->
 
   @_attributes = inputArray
   @_store = []
+  @this = this
+
 
   return
 
@@ -40,8 +42,14 @@ add = (input...) ->
 
   this
 
+length = () ->
+  @_store.length
+
+
 class Holborn
   constructor: constructor
   add: add
+  length: length
+
 
 module.exports = Holborn
