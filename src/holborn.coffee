@@ -42,14 +42,17 @@ add = (input...) ->
 
   this
 
-length = () ->
+length = ->
   @_store.length
 
+all = ->
+  @_store
 
 class Holborn
   constructor: constructor
   add: add
   length: length
+  all: all
 
 
 module.exports = Holborn
