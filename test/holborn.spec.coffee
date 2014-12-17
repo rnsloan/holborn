@@ -206,7 +206,7 @@ describe 'Holborn', ->
 
       test.add
         name: 'frank',
-        age: 27,
+        age: 23,
         sex: 'male'
       ,
         name: 'mary',
@@ -220,6 +220,25 @@ describe 'Holborn', ->
       test.find('name', 'frank').should.eql([
         id: 1,
         name: 'frank',
-        age: 27,
+        age: 23,
         sex: 'male'
+      ])
+
+      test.find('id', 1).should.eql([
+        id: 1,
+        name: 'frank',
+        age: 23,
+        sex: 'male'
+      ])
+
+      test.find('age', 23).should.eql([
+        id: 1,
+        name: 'frank',
+        age: 23,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
       ])
