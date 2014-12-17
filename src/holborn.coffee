@@ -43,6 +43,7 @@ add = (input...) ->
 all = ->
   @_store
 
+
 find = (key, value) ->
   result = []
   for obj in @_store
@@ -56,6 +57,9 @@ length = ->
   @_store.length
 
 
+remove = ->
+  'remove'
+
 
 class Holborn
   constructor: constructor
@@ -63,6 +67,7 @@ class Holborn
   all: all
   find: find
   length: length
+  remove: remove
 
 
 module.exports = Holborn

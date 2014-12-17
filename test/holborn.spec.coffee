@@ -242,3 +242,23 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
       ])
+
+      test.find('age', 34).should.eql([])
+      test.find('namesss', 'mary').should.eql([])
+
+  describe '#remove', ->
+    test = null
+    beforeEach ->
+      test = new Holborn ['name', 'age', 'sex']
+
+      test.add
+        name: 'frank',
+        age: 23,
+        sex: 'male'
+      ,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+
+    it 'should exist', ->
+      test.remove.should.be.a.Function
