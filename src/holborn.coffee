@@ -20,8 +20,6 @@ constructor = (inputArray) ->
 
   @_attributes = inputArray
   @_store = []
-  @this = this
-
 
   return
 
