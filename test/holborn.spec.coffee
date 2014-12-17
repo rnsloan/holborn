@@ -215,3 +215,11 @@ describe 'Holborn', ->
 
     it 'should exist', ->
       test.find.should.be.a.Function
+
+    it 'should return correct result', ->
+      test.find('name', 'frank').should.eql([
+        id: 1,
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      ])

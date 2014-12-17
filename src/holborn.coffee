@@ -43,7 +43,13 @@ add = (input...) ->
 all = ->
   @_store
 
-find = ->
+find = (key, value) ->
+  result = []
+  for obj in @_store
+    if obj[key] == value
+      result.push obj
+
+  result
 
 
 length = ->
