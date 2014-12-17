@@ -44,16 +44,16 @@ store.add
 
 
 # should return correct number
-store.length
+store.length()
 
 # should return all records
-store.all
+store.all()
 
 # save to localstorage
-store.save
+store.save()
 
 # retrieve / update from local storage
-store.fetch
+store.fetch()
 
 # return all relevant rows
 store.find

@@ -40,17 +40,23 @@ add = (input...) ->
 
   this
 
+all = ->
+  @_store
+
+find = ->
+
+
 length = ->
   @_store.length
 
-all = ->
-  @_store
+
 
 class Holborn
   constructor: constructor
   add: add
-  length: length
   all: all
+  find: find
+  length: length
 
 
 module.exports = Holborn

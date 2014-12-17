@@ -198,3 +198,20 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
       ])
+
+  describe '#find', ->
+    test = null
+    beforeEach ->
+      test = new Holborn ['name', 'age', 'sex']
+
+      test.add
+        name: 'frank',
+        age: 27,
+        sex: 'male'
+      ,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+
+    it 'should exist', ->
+      test.find.should.be.a.Function
