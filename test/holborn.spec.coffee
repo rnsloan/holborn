@@ -295,3 +295,20 @@ describe 'Holborn', ->
         age: 30,
         sex: 'male'
       ])
+
+  describe '#update', ->
+    test = null
+    beforeEach ->
+      test = new Holborn ['name', 'age', 'sex']
+
+      test.add
+        name: 'frank',
+        age: 23,
+        sex: 'male'
+      ,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+
+    it 'should exist', ->
+      test.update.should.be.a.Function

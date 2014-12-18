@@ -3,7 +3,7 @@ Model
 -------
 create a model that stores records,
 record names and attributes created on setup call. passed in as array
-.create, .read, .update, .delete
+.create, .read, .update, .remove
 set defaults
 .all returns all records
 .find returns object with all records that match find 'name' , 'ross'

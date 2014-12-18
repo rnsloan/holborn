@@ -69,6 +69,9 @@ remove = (records) ->
   @_records = @_records.filter(keepThisRecord)
 
 
+update = ->
+
+
 class Holborn
   constructor: constructor
   add: add
@@ -76,6 +79,7 @@ class Holborn
   find: find
   length: length
   remove: remove
+  update: update
 
 
 module.exports = Holborn
