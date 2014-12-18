@@ -57,8 +57,19 @@ length = ->
   @_store.length
 
 
-remove = ->
-  'remove'
+remove = (inputArray) ->
+  idStore = []
+
+  isNotInIdStore = (obj) ->
+    if idStore.indexOf(obj.id) == -1
+      return obj
+
+  for obj in inputArray
+    idStore.push obj.id
+
+  newStore = @_store.filter(isNotInIdStore)
+
+  @_store = newStore
 
 
 class Holborn
