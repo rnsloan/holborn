@@ -19,12 +19,12 @@ constructor = (inputArray) ->
     throw new Error "value 'id' is a reserved name"
 
   @_attributes = inputArray
-  @_store = []
+  @_records = []
 
   return
 
-add = (objArray...) ->
-  objects = objArray
+add = (recordArray...) ->
+  records = recordArray
 
   checkKeys = (obj) =>
     keys = Object.keys(obj)
@@ -32,41 +32,41 @@ add = (objArray...) ->
       if @_attributes.indexOf(key) == -1
         throw new Error "object key: #{key} not in initialising array"
 
-  for obj in objects
-    checkKeys(obj)
-    obj.id = @unique_id
+  for record in records
+    checkKeys(record)
+    record.id = @unique_id
     @unique_id++
-    @_store.push obj
+    @_records.push record
 
   this
 
 all = ->
-  @_store
+  @_records
 
 
 find = (key, value) ->
   result = []
-  for obj in @_store
-    if obj[key] == value
-      result.push obj
+  for record in @_records
+    if record[key] == value
+      result.push record
 
   result
 
 
 length = ->
-  @_store.length
+  @_records.length
 
 
-remove = (objArray) ->
+remove = (records) ->
   idsToRemove = []
-  keepThisObject = (obj) ->
-    if idsToRemove.indexOf(obj.id) == -1
-      return obj
+  keepThisRecord = (record) ->
+    if idsToRemove.indexOf(record.id) == -1
+      return record
 
-  for obj in objArray
-    idsToRemove.push obj.id
+  for record in records
+    idsToRemove.push record.id
 
-  @_store = @_store.filter(keepThisObject)
+  @_records = @_records.filter(keepThisRecord)
 
 
 class Holborn

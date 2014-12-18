@@ -42,7 +42,7 @@ describe 'Holborn', ->
 
     it 'should initialise an empty store', ->
       test = new Holborn(['foo', 'bar'])
-      test._store.should.eql([])
+      test._records.should.eql([])
 
     it 'should throw an error if value is id', ->
       test = ->
@@ -62,13 +62,13 @@ describe 'Holborn', ->
       test.add.should.be.a.Function
 
     it 'should add a single object to its store', ->
-      test._store.should.be.empty
+      test._records.should.be.empty
       test.add
         name: 'john',
         age: 15,
         sex: 'male'
 
-      test._store.should.eql([
+      test._records.should.eql([
         id: 1,
         name: 'john',
         age: 15,
@@ -78,13 +78,13 @@ describe 'Holborn', ->
       test.unique_id.should.eql 2
 
     it 'should not matter what order the passed in objects keys are in', ->
-      test._store.should.be.empty
+      test._records.should.be.empty
       test.add
         sex: 'male'
         age: 15,
         name: 'john'
 
-      test._store.should.eql([
+      test._records.should.eql([
         id: 1,
         name: 'john',
         age: 15,
@@ -101,7 +101,7 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
 
-      test._store.should.eql([
+      test._records.should.eql([
         id: 1,
         name: 'frank',
         age: 27,
@@ -125,7 +125,7 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
 
-      test._store.should.eql([
+      test._records.should.eql([
         id: 1,
         name: 'frank',
         age: 27,
