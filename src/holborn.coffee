@@ -23,8 +23,8 @@ constructor = (inputArray) ->
 
   return
 
-add = (input...) ->
-  objects = input
+add = (objArray...) ->
+  objects = objArray
 
   checkKeys = (obj) =>
     keys = Object.keys(obj)
@@ -57,19 +57,16 @@ length = ->
   @_store.length
 
 
-remove = (inputArray) ->
-  idStore = []
-
-  isNotInIdStore = (obj) ->
-    if idStore.indexOf(obj.id) == -1
+remove = (objArray) ->
+  idsToRemove = []
+  keepThisObject = (obj) ->
+    if idsToRemove.indexOf(obj.id) == -1
       return obj
 
-  for obj in inputArray
-    idStore.push obj.id
+  for obj in objArray
+    idsToRemove.push obj.id
 
-  newStore = @_store.filter(isNotInIdStore)
-
-  @_store = newStore
+  @_store = @_store.filter(keepThisObject)
 
 
 class Holborn
