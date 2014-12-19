@@ -30,7 +30,7 @@ add = (recordArray...) ->
     keys = Object.keys(obj)
     for key in keys
       if @_attributes.indexOf(key) == -1
-        throw new Error "object key: #{key} not in initialising array"
+        throw new Error "record key: #{key} not in initialising array"
 
   for record in records
     checkKeys(record)
