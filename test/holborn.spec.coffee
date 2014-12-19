@@ -44,7 +44,7 @@ describe 'Holborn', ->
       test = new Holborn(['foo', 'bar'])
       test._records.should.eql([])
 
-    it 'should throw an error if value is id', ->
+    it 'should throw an error if a value has the name "id"', ->
       test = ->
         new Holborn(['id'])
       test.should.throw("value 'id' is a reserved name")
@@ -61,7 +61,7 @@ describe 'Holborn', ->
     it 'should exist', ->
       test.add.should.be.a.Function
 
-    it 'should add a single object to its store', ->
+    it 'should add a single record to its store', ->
       test._records.should.be.empty
       test.add
         name: 'john',
@@ -77,7 +77,7 @@ describe 'Holborn', ->
 
       test.unique_id.should.eql 2
 
-    it 'should not matter what order the passed in objects keys are in', ->
+    it 'should not matter what order the passed in records keys are in', ->
       test._records.should.be.empty
       test.add
         sex: 'male'
@@ -91,7 +91,7 @@ describe 'Holborn', ->
         sex: 'male'
       ])
 
-    it 'should add multiple objects to its store', ->
+    it 'should add multiple records to its store', ->
       test.add
         name: 'frank',
         age: 27,
@@ -115,14 +115,14 @@ describe 'Holborn', ->
 
       test.unique_id.should.eql 3
 
-    it 'should throw an error if trying to add key that has not been initialised', ->
+    it 'should throw an error if trying to add a key that has not been initialised', ->
       test2 = ->
         test.add
           name: 'john',
           age: 15,
           foobar: 1234
 
-      test2.should.throw("object key: foobar not in initialising array")
+      test2.should.throw("record key: foobar not in initialising array")
 
   describe '#length', ->
     test = null
@@ -134,7 +134,7 @@ describe 'Holborn', ->
     it 'should initially return 0', ->
       test.length().should.eql 0
 
-    it 'should return 2 when 2 objects are added', ->
+    it 'should return 2 when 2 records are added', ->
       test.add
         name: 'frank',
         age: 27,
@@ -288,3 +288,5 @@ describe 'Holborn', ->
 
     it 'should exist', ->
       test.update.should.be.a.Function
+
+    it 'should update a record', ->
