@@ -38,7 +38,6 @@ add = (recordArray...) ->
     @unique_id++
     @_records.push record
 
-  this
 
 all = ->
   @_records
