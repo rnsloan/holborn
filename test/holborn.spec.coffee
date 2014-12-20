@@ -348,3 +348,24 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
       ])
+
+    it 'should not update if no matches are found', ->
+      test.update({age: 23, name: 'keith'}, {name: 'roger', age: 45})
+
+      test.all().should.eql([
+        id: 1,
+        name: 'frank',
+        age: 23,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])
+
+    it 'should throw errors if passed in records have keys that were not initialised', ->
+      check = ->
+        test.update({color: 23, name: 'keith'}, {name: 'roger', age: 45})
+
+      check.should.throw("record key: color not in initialising array")

@@ -70,11 +70,8 @@ remove = (records) ->
 
 
 update = (checkAgainst, updateTo) ->
-  for key in checkAgainst
-    @_checkKeys(key)
-
-  for key in updateTo
-    @_checkKeys(key)
+  @_checkKeys(checkAgainst)
+  @_checkKeys(updateTo)
 
   checkIfRecordMatches = (record, compare) ->
     recordIsAMatch = true
