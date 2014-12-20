@@ -106,17 +106,34 @@
     return this._records.length;
   };
 
-  remove = function(records) {
-    var idsToRemove, keepThisRecord, record, _i, _len;
+  remove = function() {
+    var checkAgainst, idsToRemove, input, keepThisRecord, key, record, value, _i, _j, _len, _len1, _ref, _ref1;
+    input = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
     idsToRemove = [];
     keepThisRecord = function(record) {
       if (idsToRemove.indexOf(record.id) === -1) {
         return record;
       }
     };
-    for (_i = 0, _len = records.length; _i < _len; _i++) {
-      record = records[_i];
-      idsToRemove.push(record.id);
+    if (typeof input[0] === 'string') {
+      key = input[0];
+      value = input[1];
+      _ref = this._records;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        record = _ref[_i];
+        if (record[key] === value) {
+          idsToRemove.push(record.id);
+        }
+      }
+    } else {
+      checkAgainst = input[0];
+      _ref1 = this._records;
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        record = _ref1[_j];
+        if (this._checkIfRecordMatches(record, checkAgainst) === true) {
+          idsToRemove.push(record.id);
+        }
+      }
     }
     return this._records = this._records.filter(keepThisRecord);
   };

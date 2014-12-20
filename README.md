@@ -1,4 +1,4 @@
-# holborn [![Build Status](https://secure.travis-ci.org/rnsloan/holborn.png?branch=master)](https://travis-ci.org/rnsloan/holborn)
+# holborn [![Build Status](https://travis-ci.org/rnsloan/holborn.svg?branch=master)](https://travis-ci.org/rnsloan/holborn)
 
 A datastore kind of like a cross between Backbone's Model and Collection
 
