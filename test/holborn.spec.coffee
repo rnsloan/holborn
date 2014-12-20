@@ -333,3 +333,18 @@ describe 'Holborn', ->
         age: 23,
         sex: 'female'
       ])
+
+    it 'should not matter what order the properties are passed in', ->
+      test.update({age: 23, name: 'frank'}, {name: 'roger', age: 45})
+
+      test.all().should.eql([
+        id: 1,
+        name: 'roger',
+        age: 45,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])

@@ -77,9 +77,13 @@ update = (checkAgainst, updateTo) ->
     @_checkKeys(key)
 
   checkIfRecordMatches = (record, compare) ->
+    recordIsAMatch = true
+
     for key of compare
-      if compare[key] != record[key]
-        return false
+      if record[key] != compare[key]
+        recordIsAMatch = false
+
+    if recordIsAMatch is true
       return true
 
   for record in @_records
