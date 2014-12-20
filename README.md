@@ -57,6 +57,7 @@ store.length() >>
 ### update
 
 `test.update({name: 'frank', age: 23}, {name: 'roger'})`
+
 `test.update({age: 23, name: 'keith'}, {name: 'roger', age: 45})`
 
 
