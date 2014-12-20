@@ -17,7 +17,7 @@ describe '#find', ->
   it 'should exist', ->
     test.find.should.be.a.Function
 
-  it 'should return correct result', ->
+  it 'should return correct result when key, value are strings', ->
     test.find('name', 'frank').should.eql([
       id: 1,
       name: 'frank',
@@ -46,3 +46,11 @@ describe '#find', ->
 
     test.find('age', 34).should.eql([])
     test.find('namesss', 'mary').should.eql([])
+
+  it 'should return correct result when keys, values are an object', ->
+    test.find({age: 23, name: 'frank'}).should.eql([
+      id: 1,
+      name: 'frank',
+      age: 23,
+      sex: 'male'
+    ])

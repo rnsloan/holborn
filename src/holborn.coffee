@@ -10,6 +10,15 @@ constructor = (inputArray) ->
       if @_attributes.indexOf(key) == -1
         throw new Error "record key: #{key} not in initialising array"
 
+  @_checkIfRecordMatches = (record, compare) ->
+    recordIsAMatch = true
+    for key of compare
+      if record[key] != compare[key]
+        recordIsAMatch = false
+
+    if recordIsAMatch is true
+      return true
+
   @unique_id = 1
 
   if typeIsArray(inputArray) is false
@@ -44,11 +53,21 @@ all = ->
   @_records
 
 
-find = (key, value) ->
+find = (input...) ->
   result = []
-  for record in @_records
-    if record[key] == value
-      result.push record
+
+  if typeof input[0] == 'string'
+    key = input[0]
+    value = input[1]
+
+    for record in @_records
+      if record[key] == value
+        result.push record
+  else
+    checkAgainst = input[0]
+    for record in @_records
+      if @_checkIfRecordMatches(record, checkAgainst) is true
+        result.push record
 
   result
 
@@ -73,18 +92,8 @@ update = (checkAgainst, updateTo) ->
   @_checkKeys(checkAgainst)
   @_checkKeys(updateTo)
 
-  checkIfRecordMatches = (record, compare) ->
-    recordIsAMatch = true
-
-    for key of compare
-      if record[key] != compare[key]
-        recordIsAMatch = false
-
-    if recordIsAMatch is true
-      return true
-
   for record in @_records
-    if checkIfRecordMatches(record, checkAgainst) is true
+    if @_checkIfRecordMatches(record, checkAgainst) is true
       for key of updateTo
         record[key] = updateTo[key]
 
