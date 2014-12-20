@@ -2,7 +2,7 @@
   "name": "holborn",
   "version": "0.0.0",
   "private": true,
-  "description": "MVC library",
+  "description": "A datastore kind of like a cross between Backbone's Model and Collection",
   "homepage": "https://github.com/rnsloan/holborn",
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
   },
   "main": "./dist/holborn",
   "author": {
-    "name": "",
-    "email": "",
-    "url": "https://github.com/rnsloan"
+    "name": "rnsloan",
+    "email": "rnsloan1@gmail.com",
+    "url": "https://github.com/rnsloan/holborn"
   },
   "license": "MIT",
   "devDependencies": {
