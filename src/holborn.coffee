@@ -76,14 +76,25 @@ length = ->
   @_records.length
 
 
-remove = (records) ->
+remove = (input...) ->
   idsToRemove = []
   keepThisRecord = (record) ->
     if idsToRemove.indexOf(record.id) == -1
       return record
 
-  for record in records
-    idsToRemove.push record.id
+  if typeof input[0] == 'string'
+    key = input[0]
+    value = input[1]
+
+    for record in @_records
+      if record[key] == value
+
+        idsToRemove.push record.id
+  else
+    checkAgainst = input[0]
+    for record in @_records
+      if @_checkIfRecordMatches(record, checkAgainst) is true
+        idsToRemove.push record.id
 
   @_records = @_records.filter(keepThisRecord)
 
