@@ -1,6 +1,6 @@
 {
   "name": "holborn",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A datastore kind of like a cross between Backbone's Model and Collection",
   "homepage": "https://github.com/rnsloan/holborn",
   "repository": {
