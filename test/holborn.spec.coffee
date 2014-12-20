@@ -290,3 +290,46 @@ describe 'Holborn', ->
       test.update.should.be.a.Function
 
     it 'should update a record', ->
+      test.update({name: 'frank'}, {name: 'roger'})
+
+      test.all().should.eql([
+        id: 1,
+        name: 'roger',
+        age: 23,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])
+
+    it 'should update a record when the search has multiple keys', ->
+      test.update({name: 'frank', age: 23}, {name: 'roger'})
+
+      test.all().should.eql([
+        id: 1,
+        name: 'roger',
+        age: 23,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])
+
+    it 'should update a record when the update has multiple keys', ->
+      test.update({name: 'frank', age: 23}, {name: 'roger', age: 45})
+
+      test.all().should.eql([
+        id: 1,
+        name: 'roger',
+        age: 45,
+        sex: 'male'
+      ,
+        id: 2,
+        name: 'mary',
+        age: 23,
+        sex: 'female'
+      ])

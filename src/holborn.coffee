@@ -4,6 +4,12 @@ constructor = (inputArray) ->
   typeIsString = ( value ) -> return typeof value == 'string'
   hasValueId = ( value ) -> return value.toLowerCase() == 'id'
 
+  @_checkKeys = (obj) ->
+    keys = Object.keys(obj)
+    for key in keys
+      if @_attributes.indexOf(key) == -1
+        throw new Error "record key: #{key} not in initialising array"
+
   @unique_id = 1
 
   if typeIsArray(inputArray) is false
@@ -23,17 +29,12 @@ constructor = (inputArray) ->
 
   return
 
+
 add = (recordArray...) ->
   records = recordArray
 
-  checkKeys = (obj) =>
-    keys = Object.keys(obj)
-    for key in keys
-      if @_attributes.indexOf(key) == -1
-        throw new Error "record key: #{key} not in initialising array"
-
   for record in records
-    checkKeys(record)
+    @_checkKeys(record)
     record.id = @unique_id
     @unique_id++
     @_records.push record
@@ -68,7 +69,23 @@ remove = (records) ->
   @_records = @_records.filter(keepThisRecord)
 
 
-update = ->
+update = (checkAgainst, updateTo) ->
+  for key in checkAgainst
+    @_checkKeys(key)
+
+  for key in updateTo
+    @_checkKeys(key)
+
+  checkIfRecordMatches = (record, compare) ->
+    for key of compare
+      if compare[key] != record[key]
+        return false
+      return true
+
+  for record in @_records
+    if checkIfRecordMatches(record, checkAgainst) is true
+      for key of updateTo
+        record[key] = updateTo[key]
 
 
 class Holborn
