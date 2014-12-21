@@ -5,7 +5,16 @@ A datastore kind of like a cross between Backbone's Model and Collection
 
 ## Getting started
 
+### nodejs
+
 `npm install holborn`
+
+### Browser
+
+`browser/holborn.js`
+
+Requires IE9+
+
 
 ## API
 
@@ -17,9 +26,11 @@ Create a new store by initialising with the keys
 
 ### add
 
-`store.add({name: 'john', age: 15, sex: 'male'})`
+```
+store.add({name: 'john', age: 15, sex: 'male'})
 
-`store.add({name: 'frank', age: 27, sex: 'male'},{name: 'mary', age: 23, sex: 'female'})`
+store.add({name: 'frank', age: 27, sex: 'male'},{name: 'mary', age: 23, sex: 'female'})
+```
 
 ### all
 
@@ -33,9 +44,7 @@ store.all() >>
 ```
 store.find('name', 'frank') >>
 [{id: 1, name: 'frank', age: 23, sex: 'male'}]
-```
 
-```
 store.find({age: 23, name: 'frank'}) >>
 [{id: 1, name: 'frank', age: 23, sex: 'male'}]
 ```
@@ -49,16 +58,20 @@ store.length() >>
 
 ### remove
 
-`test.remove('age', 23)`
+```
+test.remove('age', 23)
 
-`test.remove({age: 23, name: 'frank'})`
+test.remove({age: 23, name: 'frank'})
+```
 
 
 ### update
 
-`test.update({name: 'frank', age: 23}, {name: 'roger'})`
+```
+test.update({name: 'frank', age: 23}, {name: 'roger'})
 
-`test.update({age: 23, name: 'keith'}, {name: 'roger', age: 45})`
+test.update({age: 23, name: 'keith'}, {name: 'roger', age: 45})
+```
 
 
 ## Development

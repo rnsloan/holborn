@@ -10,7 +10,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'test',    [ 'mochacov:spec', 'lint' ]
   grunt.registerTask 'cov',     [ 'mochacov:cov' ]
   grunt.registerTask 'default', [ 'test' ]
-  grunt.registerTask 'build',   [ 'test', 'clean', 'coffee:dist' ]
+  grunt.registerTask 'build',   [ 'test', 'clean', 'coffee:dist', 'browserify:dist' ]
 
   ###
   # config
@@ -66,4 +66,16 @@ module.exports = (grunt) ->
       dist:
         files:
           'dist/holborn.js' : 'src/**/*.coffee'
+
+    browserify:
+      dist:
+        src: 'dist/holborn.js',
+        dest: 'browser/holborn.js'
+        options:
+          browserifyOptions:
+            standalone: 'Holborn'
+
+
+
+
 
