@@ -11,6 +11,9 @@
     "test" : "grunt test",
     "prepublish": "grunt build"
   },
+  "bugs": {
+    "url" : "http://github.com/rnsloan/holborn/issues"
+  },
   "config": {
     "blanket": {
       "loader": "./node-loaders/coffee-script",
